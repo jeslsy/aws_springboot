@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'org.springframework.boot'  version '2.1.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.0.RELEASE'
+}
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+// 어떤 원격 저장소에서 받을지
+repositories {
+    // 자신이 만든 라이브러리 업로드 어려움
+    mavenCentral()
+    // 업로드 간단!
+    jcenter()
+}
+
+// 의존성 선언부
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    //Spring Framework
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    def springBootVersion = '2.1.7.RELEASE'
+        implementation "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
